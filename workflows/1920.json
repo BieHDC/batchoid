@@ -1,0 +1,363 @@
+{
+  "prepend" : false,
+  "batch" : {
+    "graph" : {
+      "id" : "sdxl_control_layers_graph",
+      "nodes" : {
+        "sdxl_model_loader" : {
+          "type" : "sdxl_model_loader",
+          "id" : "sdxl_model_loader",
+          "model" : {
+            "key" : "a18ccaf4-8151-4b53-935f-17751ba53661",
+            "hash" : "blake3:eeebfaabcf9980ddc16a268f9dee4175b65c24813d47b0f32e2ff93c63219982",
+            "name" : "prefectPonyXL_v2CleanedStyle",
+            "base" : "sdxl",
+            "type" : "main"
+          },
+          "is_intermediate" : true,
+          "use_cache" : true
+        },
+        "positive_conditioning" : {
+          "type" : "sdxl_compel_prompt",
+          "id" : "positive_conditioning",
+          "prompt" : "\n",
+          "style" : "photorealistic, realistic, lineart, 3d render",
+          "is_intermediate" : true,
+          "use_cache" : true
+        },
+        "positive_conditioning_collect" : {
+          "type" : "collect",
+          "id" : "positive_conditioning_collect",
+          "is_intermediate" : true,
+          "use_cache" : true
+        },
+        "negative_conditioning" : {
+          "type" : "sdxl_compel_prompt",
+          "id" : "negative_conditioning",
+          "prompt" : "",
+          "style" : "",
+          "is_intermediate" : true,
+          "use_cache" : true
+        },
+        "negative_conditioning_collect" : {
+          "type" : "collect",
+          "id" : "negative_conditioning_collect",
+          "is_intermediate" : true,
+          "use_cache" : true
+        },
+        "noise" : {
+          "type" : "noise",
+          "id" : "noise",
+          "seed" : 1122334488,
+          "width" : 1368,
+          "height" : 768,
+          "use_cpu" : true,
+          "is_intermediate" : true,
+          "use_cache" : true
+        },
+        "sdxl_denoise_latents" : {
+          "type" : "denoise_latents",
+          "id" : "sdxl_denoise_latents",
+          "cfg_scale" : 7,
+          "cfg_rescale_multiplier" : 0,
+          "scheduler" : "dpmpp_2m",
+          "steps" : 30,
+          "denoising_start" : 0,
+          "denoising_end" : 1,
+          "is_intermediate" : true,
+          "use_cache" : true
+        },
+        "latents_to_image" : {
+          "type" : "l2i",
+          "id" : "latents_to_image",
+          "fp32" : true,
+          "board" : {
+            "board_id" : "f6c43813-f354-443a-93f7-cab8d8965b96"
+          },
+          "is_intermediate" : false,
+          "use_cache" : false
+        },
+        "core_metadata" : {
+          "id" : "core_metadata",
+          "type" : "core_metadata",
+          "is_intermediate" : true,
+          "use_cache" : true,
+          "generation_mode" : "sdxl_txt2img",
+          "cfg_scale" : 7,
+          "cfg_rescale_multiplier" : 0,
+          "height" : 768,
+          "width" : 1368,
+          "negative_prompt" : "",
+          "model" : {
+            "key" : "a18ccaf4-8151-4b53-935f-17751ba53661",
+            "hash" : "blake3:eeebfaabcf9980ddc16a268f9dee4175b65c24813d47b0f32e2ff93c63219982",
+            "name" : "prefectPonyXL_v2CleanedStyle",
+            "base" : "sdxl",
+            "type" : "main"
+          },
+          "steps" : 30,
+          "rand_device" : "cpu",
+          "scheduler" : "dpmpp_2m",
+          "positive_style_prompt" : "photorealistic, realistic, lineart, 3d render",
+          "negative_style_prompt" : "",
+          "control_layers" : {
+            "layers" : [
+              {
+                "id" : "control_adapter_layer_e000963c-f4ad-4472-a04a-5f917b11dcb8",
+                "isEnabled" : true,
+                "isSelected" : true,
+                "x" : 0,
+                "y" : 0,
+                "bbox" : null,
+                "bboxNeedsUpdate" : true,
+                "type" : "control_adapter_layer",
+                "opacity" : 1,
+                "isFilterEnabled" : true,
+                "controlAdapter" : {
+                  "id" : "3f04c945-33d2-4f12-9ec1-bf8832db3213",
+                  "weight" : 1,
+                  "image" : {
+                    "name" : "040b3574-c3ee-44a1-a114-fe8f91fde0d6.png",
+                    "width" : 1920,
+                    "height" : 1080
+                  },
+                  "processedImage" : null,
+                  "processorConfig" : null,
+                  "processorPendingBatchId" : null,
+                  "beginEndStepPct" : [
+                    0,
+                    0.90000000000000002
+                  ],
+                  "type" : "controlnet",
+                  "model" : {
+                    "key" : "cd843623-930a-41bf-be4f-0f3221bead7d",
+                    "hash" : "blake3:167a5b84583aaed3e5c8d660b45830e82e1c602743c689d3c27773c6c8b85b4a",
+                    "name" : "tile-sdxl",
+                    "base" : "sdxl",
+                    "type" : "controlnet"
+                  },
+                  "controlMode" : "balanced"
+                }
+              }
+            ],
+            "version" : 3
+          }
+        },
+        "control_net_collect" : {
+          "id" : "control_net_collect",
+          "type" : "collect",
+          "is_intermediate" : true,
+          "use_cache" : true
+        },
+        "control_net_3f04c945-33d2-4f12-9ec1-bf8832db3213" : {
+          "id" : "control_net_3f04c945-33d2-4f12-9ec1-bf8832db3213",
+          "type" : "controlnet",
+          "begin_step_percent" : 0,
+          "end_step_percent" : 0.90000000000000002,
+          "control_mode" : "balanced",
+          "resize_mode" : "just_resize",
+          "control_model" : {
+            "key" : "cd843623-930a-41bf-be4f-0f3221bead7d",
+            "hash" : "blake3:167a5b84583aaed3e5c8d660b45830e82e1c602743c689d3c27773c6c8b85b4a",
+            "name" : "tile-sdxl",
+            "base" : "sdxl",
+            "type" : "controlnet"
+          },
+          "control_weight" : 1,
+          "image" : {
+            "image_name" : "040b3574-c3ee-44a1-a114-fe8f91fde0d6.png"
+          },
+          "is_intermediate" : true,
+          "use_cache" : true
+        }
+      },
+      "edges" : [
+        {
+          "source" : {
+            "node_id" : "sdxl_model_loader",
+            "field" : "unet"
+          },
+          "destination" : {
+            "node_id" : "sdxl_denoise_latents",
+            "field" : "unet"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "sdxl_model_loader",
+            "field" : "clip"
+          },
+          "destination" : {
+            "node_id" : "positive_conditioning",
+            "field" : "clip"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "sdxl_model_loader",
+            "field" : "clip"
+          },
+          "destination" : {
+            "node_id" : "negative_conditioning",
+            "field" : "clip"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "sdxl_model_loader",
+            "field" : "clip2"
+          },
+          "destination" : {
+            "node_id" : "positive_conditioning",
+            "field" : "clip2"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "sdxl_model_loader",
+            "field" : "clip2"
+          },
+          "destination" : {
+            "node_id" : "negative_conditioning",
+            "field" : "clip2"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "positive_conditioning",
+            "field" : "conditioning"
+          },
+          "destination" : {
+            "node_id" : "positive_conditioning_collect",
+            "field" : "item"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "negative_conditioning",
+            "field" : "conditioning"
+          },
+          "destination" : {
+            "node_id" : "negative_conditioning_collect",
+            "field" : "item"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "positive_conditioning_collect",
+            "field" : "collection"
+          },
+          "destination" : {
+            "node_id" : "sdxl_denoise_latents",
+            "field" : "positive_conditioning"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "negative_conditioning_collect",
+            "field" : "collection"
+          },
+          "destination" : {
+            "node_id" : "sdxl_denoise_latents",
+            "field" : "negative_conditioning"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "noise",
+            "field" : "noise"
+          },
+          "destination" : {
+            "node_id" : "sdxl_denoise_latents",
+            "field" : "noise"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "sdxl_denoise_latents",
+            "field" : "latents"
+          },
+          "destination" : {
+            "node_id" : "latents_to_image",
+            "field" : "latents"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "sdxl_model_loader",
+            "field" : "vae"
+          },
+          "destination" : {
+            "node_id" : "latents_to_image",
+            "field" : "vae"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "control_net_collect",
+            "field" : "collection"
+          },
+          "destination" : {
+            "node_id" : "sdxl_denoise_latents",
+            "field" : "control"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "control_net_3f04c945-33d2-4f12-9ec1-bf8832db3213",
+            "field" : "control"
+          },
+          "destination" : {
+            "node_id" : "control_net_collect",
+            "field" : "item"
+          }
+        },
+        {
+          "source" : {
+            "node_id" : "core_metadata",
+            "field" : "metadata"
+          },
+          "destination" : {
+            "node_id" : "latents_to_image",
+            "field" : "metadata"
+          }
+        }
+      ]
+    },
+    "runs" : 1,
+    "data" : [
+      [
+        {
+          "node_path" : "noise",
+          "field_name" : "seed",
+          "items" : [
+            1122334488
+          ]
+        },
+        {
+          "node_path" : "core_metadata",
+          "field_name" : "seed",
+          "items" : [
+            1122334488
+          ]
+        }
+      ],
+      [
+        {
+          "node_path" : "positive_conditioning",
+          "field_name" : "prompt",
+          "items" : [
+            "\n"
+          ]
+        },
+        {
+          "node_path" : "core_metadata",
+          "field_name" : "positive_prompt",
+          "items" : [
+            "\n"
+          ]
+        }
+      ]
+    ]
+  }
+}
