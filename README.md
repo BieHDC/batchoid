@@ -12,3 +12,6 @@ There are 2 examples in `workflows/` i personally use. It just does some light r
 ## Demo Video
 
 This just shows what i do with this by using a random example video.  
+
+https://github.com/user-attachments/assets/896590d3-ff87-4835-9b3f-502c096c26b1
+
